@@ -22,3 +22,14 @@ variable "ghcr_pat" {
 variable "ghcr_username" {
   type = string
 }
+variable "env_vars" {
+  type        = map(string)
+  default     = {}
+  description = "Plaintext environment variables to set on the container, e.g. { Google__ClientId = \"...\" }."
+}
+variable "secret_env_vars" {
+  type        = map(string)
+  default     = {}
+  sensitive   = true
+  description = "Environment variables whose values are stored as Container Apps secrets, e.g. { YouTube__ApiKey = \"...\" }."
+}
