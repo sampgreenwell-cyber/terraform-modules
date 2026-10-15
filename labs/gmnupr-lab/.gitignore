@@ -1,0 +1,12 @@
+# Lab values (tenant, subscription, email, IP) and state never go in this public repo.
+terraform.tfvars
+*.auto.tfvars
+*.tfstate
+*.tfstate.*
+*.tfplan
+.terraform/
+crash.log
+kubeconfig
+*.kubeconfig
+# Local-only tools that name work systems, and the real-to-placeholder mapping.
+local/
