@@ -1,0 +1,16 @@
+# Copy to terraform.tfvars (gitignored) and fill in. Never commit the filled-in file.
+tenant_id       = "00000000-0000-0000-0000-000000000000"
+subscription_id = "00000000-0000-0000-0000-000000000000"
+github_owner    = "your-github-account"
+kube_context    = "gmnupr-lab"
+alert_email     = "you@example.com"
+owner_ip        = "203.0.113.10"
+
+# Work systems the lab must never target. Real values stay in terraform.tfvars only.
+work_github_orgs          = ["your-employer-org"]
+work_kube_context_pattern = "^WORKCLUSTER"
+
+# OIDC subject prefix for the lab vwstate repo. Read it with:
+#   gh api repos/<owner>/vwstate-lab/actions/oidc/customization/sub
+# Leave empty for repo:<owner>/<repo>; set it when GitHub uses the ID form repo:<owner>@<id>/<repo>@<id>.
+github_oidc_subject_prefix = ""
