@@ -5,6 +5,7 @@ Shared, reusable Terraform modules for platform services.
 ## Modules
 
 - `container-app-service` — provisions an Azure Container App pulling from GHCR.
+- `vault-app-secrets` — registers a service with Vault: read-only policy for `kv/apps/<service>/*` and an `azure/` auth role for its managed identity.
 
 ## Prerequisite (one-time, per subscription)
 

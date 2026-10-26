@@ -33,3 +33,18 @@ variable "secret_env_vars" {
   sensitive   = true
   description = "Environment variables whose values are stored as Container Apps secrets, e.g. { YouTube__ApiKey = \"...\" }."
 }
+variable "user_assigned_identity_id" {
+  type        = string
+  default     = null
+  description = "Resource ID of a user-assigned managed identity to attach, e.g. for Vault's azure auth method. null attaches none."
+}
+variable "min_replicas" {
+  type        = number
+  default     = null
+  description = "Minimum replicas. null keeps the provider default (0, scale to zero)."
+}
+variable "max_replicas" {
+  type        = number
+  default     = null
+  description = "Maximum replicas. null keeps the provider default (10)."
+}
