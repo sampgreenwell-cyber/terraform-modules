@@ -24,6 +24,14 @@ resource "azurerm_container_app" "this" {
   resource_group_name          = var.resource_group_name
   revision_mode                = "Single"
 
+  dynamic "identity" {
+    for_each = var.user_assigned_identity_id == null ? [] : [var.user_assigned_identity_id]
+    content {
+      type         = "UserAssigned"
+      identity_ids = [identity.value]
+    }
+  }
+
   secret {
     name  = "ghcr-pat"
     value = var.ghcr_pat
@@ -44,6 +52,10 @@ resource "azurerm_container_app" "this" {
   }
 
   template {
+    # null keeps the provider defaults (min 0, max 10).
+    min_replicas = var.min_replicas
+    max_replicas = var.max_replicas
+
     container {
       name   = var.service_name
       image  = var.image
